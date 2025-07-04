@@ -202,17 +202,6 @@ class AiliaTFLite {
         return true
     }
 
-    fun setScratchBuffer(intBuffer: Long, intBufferSize: Long, 
-                        midBuffer: Long, midBufferSize: Long,
-                        extBuffer: Long, extBufferSize: Long): Boolean {
-        val result = setScratchBuffer(instance, intBuffer, intBufferSize, midBuffer, midBufferSize, extBuffer, extBufferSize)
-        if (result != AILIA_TFLITE_STATUS_SUCCESS) {
-            Log.e(tag, "Failed to set scratch buffer: $result")
-            return false
-        }
-        return true
-    }
-
     fun getTensorDim(tensorIndex: Int): Int {
         val result = getTensorDim(instance, tensorIndex)
         if (result < 0) {
@@ -314,8 +303,6 @@ class AiliaTFLite {
     private external fun getSummary(instance: Long): String
     private external fun getErrorDetail(instance: Long): String
     private external fun getVersion(): String
-    private external fun setScratchBuffer(instance: Long, intBuffer: Long, intBufferSize: Long, midBuffer: Long, midBufferSize: Long, extBuffer: Long, extBufferSize: Long): Int
-    private external fun setScratchBufferEx(instance: Long, intBuffer: Long, intBufferSize: Long, midBuffer: Long, midBufferSize: Long, extBuffer: Long, extBufferSize: Long, globalBuffer: Long, globalBufferSize: Long): Int
     private external fun getTensorDim(instance: Long, tensorIndex: Int): Int
     private external fun getTensorShapeSignature(instance: Long, tensorIndex: Int): IntArray
     private external fun getTensorName(instance: Long, tensorIndex: Int): String
